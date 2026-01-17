@@ -5,5 +5,6 @@ const router = express.Router();
 
 
 router.post('/add', insertSampleProducts);
+router.get('/stats', insertSampleProducts);
 
 module.exports = router;
