@@ -14,7 +14,9 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@types/mongoose": "^5.11.96",
     "@types/node": "^25.0.9",
+    "mongoose": "^9.1.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
