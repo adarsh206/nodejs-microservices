@@ -1,41 +1,25 @@
-console.log("Hello Nodejs from typescript");
-
-function getName(name : string) {
-    return name;
-}
-
-console.log(getName("Adarsh"));
+import express, {Express, Request, Response} from "express";
 
 
-// basic types
-
-let isDone : boolean = false;
-let num : number = 100;
-let str : string = "Adarsh";
-
-let list : number[] = [1, 2, 3, 4];
-let list2 : Array<number> = [1, 2, 3, 4];
-
-let randomValue : any = 10;
-
-randomValue = true;
-randomValue = "Adarsh";
-randomValue = [];
-
-let xyz : undefined = undefined;
-let xy : null = null;
-
-enum Color {
-    Red, Green, Blue
-}
-
-let d : Color = Color.Red;
-console.log(d);
+const app : Express = express();
+const PORT = 3000;
 
 
-// tuple
-let abs : [string, number] = ["Adarsh", 100];
-console.log(abs);
 
-// interfaces, types
-// interfaces shapes your data
+app.use(express.json());
+
+//middleware -> add startTime to request
+app.use()
+
+
+// req -> Request<p, ResBody, ReqBody, ReqQuery, Locals>
+// res -> Response<ResBody, Locals>
+// res -> res.send(), res.json(), res.status()  
+app.get("/", (req : Request, res : Response) => {
+    res.send("Hello World from Typescript with express")
+})
+
+
+app.listen(PORT, () => {
+    console.log(`Server is now running at port ${PORT}`);
+})
