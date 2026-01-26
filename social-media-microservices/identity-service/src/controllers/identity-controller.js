@@ -58,3 +58,7 @@ const registerUser = async(req, res) => {
 // refresh token
 
 // logout
+
+
+
+module.exports = { registerUser };
