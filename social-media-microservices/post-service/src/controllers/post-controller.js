@@ -3,7 +3,7 @@ const logger = require("../utils/logger");
 
 // create post
 const createPost = async (req, res) => {
-  logger.info("Create post endpoint hit");
+  logger.info("Create post endpoint hit...");
   try {
     //validate the schema
     const { error } = validateCreatePost(req.body);
@@ -46,4 +46,46 @@ const createPost = async (req, res) => {
 };
 
 
-module.exports = { createPost };
+// get all posts
+const getAllPosts = () => {
+  try {
+    
+  } catch (error) {
+    logger.error("Error fetching posts", error);
+    res.status(500).json({
+      success : false,
+      message : "Error fetching posts",
+    })
+  }
+};
+
+// get post by Id
+const getPost = () => {
+  try {
+    
+  } catch (error) {
+    logger.error("Error fetching post", error);
+    res.status(500).json({
+      success : false,
+      message : "Error fetching post by Id",
+    })
+  }
+};
+
+
+// delete post
+const deletePost = () => {
+  try {
+    
+  } catch (error) {
+    logger.error("Error deleting posts", error);
+    res.status(500).json({
+      success : false,
+      message : "Error deleting post",
+    })
+  }
+};
+
+
+
+module.exports = { createPost, getAllPosts, getPost, deletePost };
