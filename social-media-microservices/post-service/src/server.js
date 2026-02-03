@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const Redis = require("ioredis");
 const cors = require("cors");
 const helmet = require("helmet");
+const { rateLimit } = require("express-rate-limit");
 const postRoutes = require("./routes/post-routes");
 const errorHandler = require("./middleware/errorHandler");
 const logger = require("./utils/logger");
