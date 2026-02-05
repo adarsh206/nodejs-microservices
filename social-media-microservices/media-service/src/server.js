@@ -8,7 +8,7 @@ const mediaRoutes = require("./routes/media-routes");
 const errorHandler = require("./middleware/errorHandler");
 const logger = require("./utils/logger");
 const { connectToRabbitMQ, consumeEvent } = require("./utils/rabbitmq");
-const { handlePostDeleted } = require("./eventHandlers/media-event-handlers");
+const { handlePostDeleted } = require("./eventHandlers/media-event-handler");
 
 const app = express();
 const PORT = process.env.PORT || 3003;
