@@ -10,6 +10,8 @@ const errorHandler = require("./middleware/errorHandler");
 const logger = require("./utils/logger");
 const { connectToRabbitMQ, consumeEvent } = require('./utils/rabbitmq');
 const searchRoutes = require('./routes/search-routes');
+const { handlePostCreated, handlePostDeleted } = require("./eventHandlers/search-event-handlers");
+
 
 
 const app = express();
@@ -59,3 +61,22 @@ app.use("/api/search/posts", sensitiveEndpointsLimiter);
 
 
 app.use('/api/search', searchRoutes);
+
+app.use(errorHandler);
+
+async function startServer(){
+    try {
+        await connectToRabbitMQ();
+
+        // consume the events / subscribe to the events
+        await consumeEvent("post.created", handlePostCreated);
+        await consumeEvent("post.deleted", handlePostDeleted);
+
+        app.listen(PORT, () => {
+            logger.info(`Search service is running on port : ${PORT}`);
+        })
+    } catch (error) {
+        logger.error(error, "Failed to start search server");
+        process.exit(1);
+    }
+}
